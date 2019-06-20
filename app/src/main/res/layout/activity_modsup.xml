@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/common_google_signin_btn_text_dark_default"
+    android:orientation="vertical"
+    >
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:background="@drawable/gradiant"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="10dp"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Latitude"
+            android:textStyle="bold"
+            android:textColor="#fff" />
+
+        <EditText
+            android:id="@+id/modsup_lat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="12dp"
+            android:textCursorDrawable="@color/green"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="#fff"
+            android:textColorHint="#000"
+            tools:ignore="Autofill,HardcodedText,LabelFor,RtlHardcoded" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Longitude"
+            android:textStyle="bold"
+            android:textColor="#fff" />
+
+        <EditText
+            android:id="@+id/modsup_lng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:layout_marginTop="5dp"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="#fff"
+            android:textCursorDrawable="@color/green"
+            android:textColorHint="#000"
+            tools:ignore="Autofill,HardcodedText,LabelFor,RtlHardcoded" />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Adresse:"
+            android:textStyle="bold"
+            android:textColor="#fff" />
+
+        <EditText
+            android:id="@+id/modsup_adr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:textCursorDrawable="@color/green"
+            android:layout_marginTop="5dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="#fff"
+            android:textColorHint="#000"
+            tools:ignore="Autofill,HardcodedText,LabelFor,RtlHardcoded" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:text="Etat"
+            android:textColor="#fff" />
+
+        <EditText
+            android:id="@+id/modsup_etat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:layout_marginTop="5dp"
+            android:textCursorDrawable="@color/green"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="#fff"
+            android:textColorHint="#000"
+            tools:ignore="Autofill,HardcodedText,LabelFor,RtlHardcoded" />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Nom D'institut "
+            android:textStyle="bold"
+            android:textColor="#fff" />
+
+        <EditText
+            android:id="@+id/modsup_inst"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="12dp"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginTop="5dp"
+            android:textCursorDrawable="@color/green"
+            android:maxLines="1"
+            android:textColor="#fff"
+            android:textColorHint="#000"
+            tools:ignore="Autofill,HardcodedText,LabelFor,RtlHardcoded" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+            <Button
+                android:id="@+id/btnMod"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:background="@drawable/green"
+                android:text="Modifier"
+                android:textSize="16dp"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/btmSup"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="7dp"
+                android:background="@drawable/green"
+                android:text="Supprimer"
+                android:textSize="16dp"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

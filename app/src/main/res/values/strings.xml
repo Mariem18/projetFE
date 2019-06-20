@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Localisation des DABs</string>
+    <string name="google_maps_API_key">"AIzaSyARfzoyjWp853aZEEp-cneHWifuQ3ZQtc4"</string>
+</resources>

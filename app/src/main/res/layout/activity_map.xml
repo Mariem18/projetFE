@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Map">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        tools:context=".MapsActivity"
+        tools:ignore="RedundantNamespace" />
+
+
+    <ImageView
+        android:id="@+id/ic_gps"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_gps"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+
+
+        <ImageView
+            android:id="@+id/mapType"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/ic_gps"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:background="@drawable/ic_map"
+            tools:ignore="RtlHardcoded"
+
+            />
+
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="600dp"
+            android:layout_marginRight="4dp"
+            tools:ignore="RtlHardcoded">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/green"
+
+        />
+
+</RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -115,6 +115,10 @@ public class DatabaseAccess {
 
     public void insertDAB(double lat,double lng ,String adrs,String etat,String instName){
 
+        adrs=adrs.replace("'","''");
+        etat=etat.replace("'","''");
+        instName=instName.replace("'","''");
+
           String sql="insert into dab (latitude,longitude,adresse,etat ,nom_institut) values ("+lat+","+lng+",'"+adrs+"','"+etat+"','"+instName+"')";
 
            database.execSQL(sql);
@@ -124,6 +128,10 @@ public class DatabaseAccess {
 
 
     public void updateDAB(long id ,double lat,double lng ,String adrs,String etat,String instName){
+
+        adrs=adrs.replace("'","''");
+        etat=etat.replace("'","''");
+        instName=instName.replace("'","''");
 
         String sql="update  dab set latitude= "+lat+",longitude="+lng+", adresse='"+adrs+"'," +
                 " etat='"+etat+"',nom_institut='"+instName+"' where _id="+id;

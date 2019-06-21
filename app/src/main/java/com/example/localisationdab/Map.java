@@ -160,13 +160,14 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         insList=database.getInsData();
         insList.add("Toutes les Banques");
-        insList.add("-BANK-");
+        insList.add("Banques");
+
+
 
         adapter=new ArrayAdapter<String>(Map.this,android.R.layout.simple_list_item_1,insList){
             @Override
             public int getCount() {
-                int count = super.getCount();
-                return count > 0 ? count - 1 : count;
+                return super.getCount()-1;
             }
         };
 
@@ -226,14 +227,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
 
     }
-    private void drawMarker(LatLng point,String title){
 
-        if(! title.equals("Ma position")){
-            MarkerOptions markerOptions = new MarkerOptions().position(point).title(title);
-            mMap.addMarker(markerOptions);
-        }
-
-    }
 
 
     // search bar nerej3oulou be3deyn
@@ -276,9 +270,10 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                                 Location currentLocation = (Location) task.getResult();
                                 if(currentLocation != null) {
                                     moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()));
-                                    drawMarker(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), "Ma position");
+
                                 }else{
                                     Toast.makeText(Map.this, "location indisponible", Toast.LENGTH_SHORT).show();
+                                    buildAlertMsgNoGPS();
                                 }
                         }
                         else{
@@ -345,12 +340,14 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                         startActivityForResult(intent, PERMISSION_REQUEST_ENABLE_GPS);
 
+
                     }
 
                 });
 
         final AlertDialog alert = builder.create();
         alert.show();
+
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.localisationdab;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +25,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -45,6 +48,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final int PERMISSION_REQUEST_ENABLE_GPS = 9001;
+    private static final int ERROR_DIALOG_REQUEST=9001;
     private static final float DEFAULT_ZOOM = 15f;
 
     private EditText mSearchText;
@@ -83,8 +87,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                 getCurrentLocation();
 
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                    Toast.makeText(this, "Verifier Votre Connection!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 mMap.setMyLocationEnabled(true);
                 init();
 
@@ -166,6 +173,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         adapter=new ArrayAdapter<String>(Map.this,android.R.layout.simple_list_item_1,insList){
             @Override
+            public int getPosition( String item) {
+                return super.getPosition(item);
+            }
+
+            @Override
             public int getCount() {
                 return super.getCount()-1;
             }
@@ -173,7 +185,9 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setSelection(adapter.getCount());
+        //spinner.setSelection(insList.size()-1);
+        //spinner.set
+        //spinner.setSelection(adapter.getCount());
 
     }
 
@@ -271,10 +285,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                                 if(currentLocation != null) {
                                     moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()));
 
-                                }else{
-                                    Toast.makeText(Map.this, "location indisponible", Toast.LENGTH_SHORT).show();
-                                    buildAlertMsgNoGPS();
                                 }
+                               else{
+                                    Toast.makeText(Map.this, "Verifier votre connection Internet ou le GPS", Toast.LENGTH_SHORT).show();
+                               }
+                            return;
                         }
                         else{
                             Toast.makeText(Map.this, "unable to get current location", Toast.LENGTH_SHORT).show();
@@ -386,19 +401,16 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions,  int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult: called");
         mLocationPermissionGranted=false;
 
-        switch(requestCode){
-            case LOCATION_PERMISSION_REQUEST_CODE :{
-                if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    Log.d(TAG, "onRequestPermissionsResult: permission granted");
-                    mLocationPermissionGranted=true;
-                    initMap();
-                }
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG, "onRequestPermissionsResult: permission granted");
+                mLocationPermissionGranted = true;
+                initMap();
             }
-
         }
 
     }

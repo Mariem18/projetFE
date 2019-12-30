@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Nom d'institut:"
+                android:text="Nom d'institution:"
                 android:textStyle="bold"
                 android:textColor="#ffff"
                 />
@@ -156,12 +156,12 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="60dp"
                 android:layout_marginBottom="48dp"
-                android:background="@drawable/green"
+                android:background="@drawable/white"
                 android:text="Ajouter"
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textSize="20dp"
-                android:textColor="#fff"
+                android:textColor="#009688"
                 tools:ignore="HardcodedText" />
 
 
